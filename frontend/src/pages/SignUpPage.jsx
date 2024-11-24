@@ -38,12 +38,10 @@ const SignUpPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const success = validateForm();
-    if (success == true) {
-      signup(formData);
-      // redirect to login page
-      window.location.href = "/login";
-    }
+
+    if (success === true) signup(formData);
   };
 
   return (
