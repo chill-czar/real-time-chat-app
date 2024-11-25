@@ -8,8 +8,11 @@ import ProfilePage from "./pages/ProfilePage";
 import { useAuthStore } from "./store/useAuthStore.js";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
+import { useThemeStore } from "./store/useThemeStore.js";
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+  const { theme } = useThemeStore();
+
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
@@ -24,7 +27,7 @@ const App = () => {
     );
 
   return (
-    <div>
+    <div data-theme={theme}>
       <Navbar />
       <Routes>
         <Route
