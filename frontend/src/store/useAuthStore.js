@@ -109,17 +109,19 @@ export const useAuthStore = create((set, get) => ({
       });
 
       socket.connect();
+      set({ socket: socket });
     } catch (error) {
       console.error("Error connecting to socket:", error);
     }
   },
   disconnectSocket: () => {
     const { authUser, socket } = get();
-    if (!authUser) return;
+    // if (!authUser) return;
 
     if (socket) {
       socket.disconnect();
       set({ socket: null }); // Clear the socket instance from the state
+      console.log("Socket disconnected");
     } else {
       console.log("Socket not found");
     }
